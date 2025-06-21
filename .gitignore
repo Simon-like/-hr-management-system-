@@ -1,0 +1,26 @@
+
+backend/node_modules/
+dist/
+.cache/
+*.log
+*.env
+*.pid
+*.seed
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 测试覆盖率
+coverage/
+.nyc_output/
+
+# TypeScript编译输出
+*.js
+*.js.map
+*.d.ts
+
+# 日志文件
+logs/
+*.log
+npm-debug.log*
