@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { DepartmentsService } from '../departments/departments.service';
 
 export interface Employee {
   id: number;
@@ -78,6 +79,8 @@ export class EmployeesService {
     },
   ];
 
+  constructor(private departmentsService: DepartmentsService) {}
+
   async findAll(): Promise<Employee[]> {
     return this.employees;
   }
@@ -106,6 +109,15 @@ export class EmployeesService {
     const empIndex = this.employees.findIndex(emp => emp.id === id);
     if (empIndex === -1) {
       throw new Error('员工不存在');
+    }
+
+    // 根据部门ID查询部门名称
+    if (empData.departmentId !== undefined) {
+      const department = await this.departmentsService.findById(empData.departmentId);
+      if (!department) {
+        throw new Error('部门不存在');
+      }
+      empData.departmentName = department.name;
     }
 
     this.employees[empIndex] = { 

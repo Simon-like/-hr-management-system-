@@ -127,7 +127,7 @@ function App() {
         employee,
       )) as Employee;
       setEmployees((prev) =>
-        prev.map((emp) => (emp.id === id ? updatedEmployee : emp)),
+        prev.map((emp) => (emp.id === id ? { ...emp, ...updatedEmployee } : emp)),
       );
     } catch (error) {
       console.error('Failed to update employee:', error);
