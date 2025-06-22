@@ -5,7 +5,7 @@ export interface User {
   username: string;
   password: string;
   email: string;
-  role: 'admin' | 'hr' | 'manager' | 'employee';
+  role: 'admin' | 'hr' | 'manager';
   createdAt: Date;
 }
 
@@ -15,8 +15,8 @@ export class UsersService {
     {
       id: 1,
       username: 'admin',
-      password: '$2b$10$8Ks6Kn3Vn2yQbJ6j9Qx4zOwN5kVcKN3Vn2yQbJ6j9Qx4zOwN5kVcK', // admin123
-      email: 'admin@techcorp.com',
+      password: '$2b$10$pkjfMx.ct0T.i7mJYb02QeQd5F9VKDdoF3JXVrhx5FA8CjM14jHi.', // admin123 的 bcrypt 哈希值
+      email: 'admin@ByteDance.com',
       role: 'admin',
       createdAt: new Date(),
     },
